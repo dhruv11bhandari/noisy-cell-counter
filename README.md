@@ -17,15 +17,6 @@ You can also start the service manually after installing `backend/requirements.t
 ```bash
 python3 backend/app.py
 ```
-
-## Push changes to GitHub
-
-The `main` branch tracks `origin/main`. After editing files, run:
-
-```bash
 git add -A
 git commit -m "Describe your changes"
 git push
-```
-
-The local `.venv`, Python cache files, environment files, and macOS metadata are excluded from Git.
