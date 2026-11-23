@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Noisy Cell Counter</title>
+<meta name="description" content="Count cells in microscopy images and see how far to trust the number.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🔬%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="/assets/style.css?v=2"></head><body>
+<main>
+<header class="hero"><div class="eyebrow">MICROSCOPY · COUNTING · UNCERTAINTY</div><h1>See the cells.<br><em>Trust the count.</em></h1>
+<p class="sub">Turn microscopy images into an editable cell count, with a clear view of how uneven sampling affects confidence. Your images are analysed in memory and never stored.</p></header>
+<label id="drop"><input type="file" id="f" accept="image/png,image/jpeg,image/tiff,image/bmp,image/webp,.tif,.tiff" multiple hidden><span class="upload-icon" aria-hidden="true">＋</span><b>Drop images here, paste one, or browse files</b><span>PNG, JPG, TIFF, BMP or WebP · up to 25 MB each</span></label>
+<div id="samples"></div>
+<section class="ctl" aria-label="Detector and model settings">
+<label>Cell radius: <b id="rv">auto</b><input type="range" id="rad" min="0" max="30" step="0.5" value="0"></label>
+<label>Sensitivity: <b id="sv">1.00</b><input type="range" id="sen" min="0.5" max="2" step="0.05" value="1"></label>
+<label>Tile grid: <b id="kv">4 × 4</b><input type="range" id="k" min="2" max="8" value="4"></label>
+<label>Cells are<select id="pol"><option value="auto">Detected automatically</option><option value="bright">Bright on dark</option><option value="dark">Dark on bright</option></select></label>
+<label>Colour channel<select id="chn"><option value="auto">Best channel</option><option value="r">Red</option><option value="g">Green</option><option value="b">Blue</option><option value="gray">Greyscale</option></select></label>
+<label>Gamma prior<select id="pri"><option value="jeffreys">Weak, Jeffreys-style</option><option value="project">Weak (α=1, β=1)</option></select></label>
+<label>Detector<select id="eng"><option value="classical">Classical (fast)</option><option value="cellpose">Cellpose, if installed</option></select></label>
+</section>
+<div class="bar" id="sum" hidden><span id="sumtxt"></span>
+<div class="seg" role="group" aria-label="Correct the detections"><button data-m="view" aria-pressed="true">View</button><button data-m="add" aria-pressed="false">Add cell</button><button data-m="remove" aria-pressed="false">Remove cell</button></div>
+<button class="ghost" id="csv">Export CSV</button></div>
+<div id="out"></div>
+<footer><b>About the estimate</b><br>The interval reflects how unevenly cells spread across image tiles. It does not account for detector mistakes such as merged or missed cells. Use <b>Add cell</b> and <b>Remove cell</b> to correct detections; the count and interval update. Review image warnings before using a result.</footer>
+</main><script src="/assets/app.js?v=2" defer></script></body></html>

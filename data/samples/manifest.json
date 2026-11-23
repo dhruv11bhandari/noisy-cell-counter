@@ -1,0 +1,17 @@
+[
+ {
+  "file": "sparse.png",
+  "title": "Sparse nuclei",
+  "truth": 70
+ },
+ {
+  "file": "uneven.png",
+  "title": "Dense, uneven lighting",
+  "truth": 220
+ },
+ {
+  "file": "clumped.png",
+  "title": "Touching cells, slightly out of focus",
+  "truth": 150
+ }
+]
